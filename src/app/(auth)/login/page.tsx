@@ -13,39 +13,68 @@ export default function LoginPage() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
 
-  const handleLogin = async (e: React.FormEvent) => {
-    e.preventDefault();
-    setError("");
-    setLoading(true);
+//   const handleLogin = async (e: React.FormEvent) => {
+//     e.preventDefault();
+//     setError("");
+//     setLoading(true);
 
-    try {
-      const res = await fetch("http://localhost:5000/api/v1/auth/login", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ email, password }),
-      });
+//     try {
+//       const res = await fetch("http://localhost:5000/api/v1/auth/login", {
+//         method: "POST",
+//         headers: {
+//           "Content-Type": "application/json",
+//         },
+//         body: JSON.stringify({ email, password }),
+//       });
 
-      const result = await res.json();
+//       const result = await res.json();
 
-      if (!res.ok) {
-        throw new Error(result.message || "Login failed");
-      }
+//       if (!res.ok) {
+//         throw new Error(result.message || "Login failed");
+//       }
 
-      localStorage.setItem("accessToken", result.data.accessToken);
+//       localStorage.setItem("accessToken", result.data.accessToken);
 
-      alert("Logged in successfully!");
+//       alert("Logged in successfully!");
 
-      router.push("/");
-      router.refresh();
-    } catch (err: any) {
-      setError(err.message);
-    } finally {
-      setLoading(false);
+//       router.push("/");
+//       router.refresh();
+//     } catch (err: any) {
+//       setError(err.message);
+//     } finally {
+//       setLoading(false);
+//     }
+//   };
+const handleLogin = async (e: React.FormEvent) => {
+  e.preventDefault();
+  setError("");
+  setLoading(true);
+
+  try {
+    const res = await fetch("http://localhost:5000/api/v1/auth/login", {
+      method: "POST",
+      credentials: "include",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ email, password }),
+    });
+
+    const result = await res.json();
+
+    if (!res.ok) {
+      throw new Error(result.message || "Login failed");
     }
-  };
 
+    alert("Logged in successfully!");
+    router.push("/");
+    router.refresh();
+  } catch (err: any) {
+    setError(err.message);
+  } finally {
+    setLoading(false);
+  }
+};
   return (
     <div className="min-h-screen flex items-center justify-center bg-gray-100 px-4">
       <div className="w-full max-w-md bg-white rounded-xl shadow-lg p-8">
