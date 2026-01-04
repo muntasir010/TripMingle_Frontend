@@ -21,16 +21,15 @@ export default function Navbar() {
   const [userData, setUserData] = useState<any>(null);
   const [isMounted, setIsMounted] = useState(false);
 
-  // ১. লগইন চেক করার জন্য প্রোফাইল ফেচ (Cookie Based)
-  useEffect(() => {
+useEffect(() => {
     // eslint-disable-next-line react-hooks/set-state-in-effect
-    setIsMounted(true); // Hydration error সমাধান করতে
+    setIsMounted(true); 
     
     const fetchProfile = async () => {
       try {
         const res = await fetch("http://localhost:5000/api/v1/users/profile", {
           method: "GET",
-          credentials: "include", // কুকি পাঠানোর জন্য এটা মাস্ট
+          credentials: "include", 
         });
         const data = await res.json();
         
@@ -45,11 +44,11 @@ export default function Navbar() {
     };
 
     fetchProfile();
-  }, [pathname]); // পেজ চেঞ্জ হলে আবার চেক করবে
+  }, [pathname]);
 
   const isLoggedIn = !!userData;
 
-  // ২. লগআউট হ্যান্ডেলার
+  
   const handleLogout = async () => {
     try {
       await fetch("http://localhost:5000/api/v1/auth/logout", {
