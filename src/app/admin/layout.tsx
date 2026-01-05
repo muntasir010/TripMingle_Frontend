@@ -7,6 +7,7 @@ export default function AdminLayout({
 }: {
   children: React.ReactNode;
 }) {
+  const user = await getUser();
   return (
     <AdminGuard>
       <div className="flex">
