@@ -1,5 +1,6 @@
 "use client";
 import Hero from "./components/home/Hero";
+import HowItWorks from "./components/home/HowItWorks";
 import PopularDestinations from "./components/home/PopularDestination";
 
 export default function Home() {
@@ -7,6 +8,7 @@ export default function Home() {
     <div className="p-10">
       <Hero/>
       <PopularDestinations/>
+      <HowItWorks/>
     </div>
   );
 }
