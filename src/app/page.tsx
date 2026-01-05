@@ -1,4 +1,5 @@
 "use client";
+import CommunityStats from "./components/home/CommunityStats";
 import Hero from "./components/home/Hero";
 import HowItWorks from "./components/home/HowItWorks";
 import PopularDestinations from "./components/home/PopularDestination";
@@ -13,6 +14,7 @@ export default function Home() {
       <HowItWorks/>
       <RecommendedMatches/>
       <Testimonials/>
+      <CommunityStats/>
     </div>
   );
 }
