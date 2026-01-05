@@ -1,7 +1,7 @@
-import AdminSidebar from "@/app/components/AdminSidebar";
-import AdminNavbar from "@/app/components/AdminNavbar";
-import { getUser } from "../lib/getUsers";
+import AdminNavbar from "../components/AdminNavbar";
+import AdminSidebar from "../components/AdminSidebar";
 import RoleGuard from "../components/auth/RoleGuard";
+import { getUser } from "../lib/getUsers";
 
 export default async function AdminLayout({
   children,
@@ -9,19 +9,16 @@ export default async function AdminLayout({
   children: React.ReactNode;
 }) {
   const user = await getUser();
-  console.log("Logged in user role:", user?.role);
+
   return (
     <RoleGuard role="ADMIN" userRole={user?.role}>
-        <div className="flex">
-          <AdminSidebar />
-
-          <div className="flex-1 min-h-screen">
-            <AdminNavbar />
-            <main className="p-6 bg-gray-50 min-h-[calc(100vh-64px)]">
-              {children}
-            </main>
-          </div>
-        </div>
+      <div className="flex min-h-screen">
+        <AdminSidebar mode="ADMIN" />
+        <main className="flex-1 bg-gray-50 p-6">
+          <AdminNavbar />
+          {children}
+        </main>
+      </div>
     </RoleGuard>
   );
 }

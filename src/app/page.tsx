@@ -1,8 +1,10 @@
+"use client";
+import Hero from "./components/home/Hero";
+
 export default function Home() {
   return (
     <div className="p-10">
-      <h1 className="text-xl text-red-500 ">Tailwind v4 is Working 🚀</h1>
-      <h1 className="text-7xl text-green-500 ">Tailwind v4 is not Working 🚀</h1>
+      <Hero/>
     </div>
   );
 }
