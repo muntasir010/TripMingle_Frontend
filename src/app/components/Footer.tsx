@@ -26,7 +26,7 @@ export default function Footer() {
           {/* Column 1: Brand & About */}
           <div className="space-y-6">
             <Link href="/" className="text-2xl font-black text-white flex items-center gap-2">
-            <Image src="/tripmingle-logo.png" alt="TripMingle Logo" width={40} height={40} />
+            <Image src="/TripMingle Logo.png" alt="TripMingle Logo" width={40} height={40} />
               <span className="text-blue-500">Trip</span>Mingle
             </Link>
             <p className="text-sm leading-relaxed">
