@@ -1,7 +1,7 @@
-import AdminNavbar from "../components/AdminNavbar";
-import AdminSidebar from "../components/AdminSidebar";
 import RoleGuard from "../components/auth/RoleGuard";
 import { getUser } from "../lib/getUsers";
+import AdminNavbar from "./_components/AdminNavbar";
+import AdminSidebar from "./_components/AdminSidebar";
 
 export default async function AdminLayout({
   children,

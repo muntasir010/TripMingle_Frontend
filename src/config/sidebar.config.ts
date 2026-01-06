@@ -19,8 +19,8 @@ export const sidebarItems: SidebarItem[] = [
   },
   {
     label: "Host Requests",
-    href: "/admin/hosts",
-    modes: ["ADMIN", "HOST"],
+    href: "/admin/host-requests",
+    modes: ["ADMIN"],
   },
   {
     label: "Trips",
