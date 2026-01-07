@@ -12,7 +12,7 @@ export default function AdminSidebar({ mode }: { mode: AdminMode }) {
   );
 
   return (
-    <aside className="w-64 border-r bg-white p-4">
+    <aside className="w-64 border-r bg-white p-4 fixed h-screen">
       <h2 className="text-lg font-bold mb-4">Admin Panel</h2>
 
       {visibleItems.map(item => (
