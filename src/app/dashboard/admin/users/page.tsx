@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 
-import { RoleSelect } from "@/app/admin/_components/RoleSelect";
+import { RoleSelect } from "@/app/dashboard/admin/_components/RoleSelect";
 
 
 export default async function UsersPage() {

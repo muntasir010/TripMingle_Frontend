@@ -3,15 +3,35 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
-const menu = [
-  { name: "Dashboard", href: "/dashboard" },
-  { name: "Admin", href: "/dashboard/admin" },
-  { name: "Host", href: "/dashboard/host" },
-  { name: "Tourist", href: "/dashboard/tourist" },
-];
+/**
+ * TEMP:
+ * In a real app, fetch the user role from context or API
+ */
+const userRole: "ADMIN" | "HOST" | "TOURIST" = "ADMIN";
+
+const menuByRole = {
+  ADMIN: [
+    { name: "Dashboard", href: "/dashboard/admin/stats" },
+    { name: "Admin Panel", href: "/dashboard/admin" },
+    { name: "Approve Hosts", href: "/dashboard/admin/host-requests" },
+    { name: "Users", href: "/dashboard/admin/users" },
+  ],
+  HOST: [
+    { name: "Dashboard", href: "/dashboard" },
+    { name: "My Trips", href: "/dashboard/host/trips" },
+    { name: "Requests", href: "/dashboard/host/requests" },
+  ],
+  TOURIST: [
+    { name: "Dashboard", href: "/dashboard" },
+    { name: "My Bookings", href: "/dashboard/tourist/bookings" },
+    { name: "Apply as Host", href: "/dashboard/tourist/apply-host" },
+  ],
+};
 
 export default function Sidebar() {
   const pathname = usePathname();
+  const menu = menuByRole[userRole];
+  
 
   return (
     <aside className="w-64 bg-white border-r">
@@ -24,7 +44,7 @@ export default function Sidebar() {
           <Link
             key={item.href}
             href={item.href}
-            className={`block px-3 py-2 rounded ${
+            className={`block px-3 py-2 rounded transition ${
               pathname === item.href
                 ? "bg-blue-600 text-white"
                 : "hover:bg-gray-100"
