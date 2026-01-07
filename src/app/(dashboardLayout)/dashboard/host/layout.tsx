@@ -1,4 +1,4 @@
-import HostSidebar from "../components/HostSidebar";
+import HostSidebar from "../../../../components/dashboard/HostSidebar";
 
 export default function HostLayout({
   children,

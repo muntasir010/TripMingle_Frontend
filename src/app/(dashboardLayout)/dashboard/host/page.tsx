@@ -1,4 +1,4 @@
-import HostSidebar from "../components/HostSidebar";
+import HostSidebar from "../../../../components/dashboard/HostSidebar";
 
 export default function HostPage() {
   return <h1 className="text-2xl">

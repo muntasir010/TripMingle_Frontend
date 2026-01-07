@@ -9,27 +9,32 @@ export type SidebarItem = {
 export const sidebarItems: SidebarItem[] = [
   {
     label: "Dashboard",
-    href: "/admin",
+    href: "/dashboard/admin",
+    modes: ["ADMIN"],
+  },
+  {
+    label: "Statistics",
+    href: "/dashboard/admin/stats",
     modes: ["ADMIN"],
   },
   {
     label: "Users",
-    href: "/admin/users",
+    href: "/dashboard/admin/users",
     modes: ["ADMIN"],
   },
   {
     label: "Host Requests",
-    href: "/admin/host-requests",
+    href: "/dashboard/admin/host-requests",
     modes: ["ADMIN"],
   },
   {
     label: "Trips",
-    href: "/admin/trips",
+    href: "/dashboard/admin/trips",
     modes: ["ADMIN", "HOST"],
   },
   {
     label: "Reports",
-    href: "/admin/reports",
+    href: "/dashboard/admin/reports",
     modes: ["ADMIN", "TOURIST"],
   },
 ];

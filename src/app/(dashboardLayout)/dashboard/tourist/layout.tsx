@@ -1,4 +1,4 @@
-import TouristSidebar from "../components/TouristSidebar";
+import TouristSidebar from "../../../../components/dashboard/TouristSidebar";
 
 export default function TouristLayout({
   children,
