@@ -23,6 +23,7 @@ export default function AdminDashboard() {
 
   if (loading) return <p>Loading...</p>;
   if (!data) return <p>No data found</p>;
+  console.log(data)
 
   return (
     <div>
@@ -34,6 +35,8 @@ export default function AdminDashboard() {
         <StatCard title="Total Users" value={data.totalUsers} />
         <StatCard title="Total Trips" value={data.totalTrips} />
         <StatCard title="Total Reviews" value={data.totalReviews} />
+        <StatCard title="Total Travel Plans" value={data.totalTravelPlans} />
+        <StatCard title="Total Travel Requests" value={data.totalTravelRequests} />
       </div>
     </div>
   );

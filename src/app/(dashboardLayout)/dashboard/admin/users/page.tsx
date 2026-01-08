@@ -1,21 +1,20 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { RoleSelect } from "@/components/dashboard/RoleSelect";
-import { cookies } from "next/headers"; // এটি ইম্পোর্ট করতে হবে
+import { cookies } from "next/headers"; 
 
 export default async function UsersPage() {
   let usersData = [];
 
   try {
-    // ১. ব্রাউজার থেকে কুকিগুলো কালেক্ট করা
+
     const cookieStore = await cookies();
     const allCookies = cookieStore.toString();
 
-    // ২. fetch করার সময় হেডার হিসেবে কুকি পাঠিয়ে দেওয়া
     const res = await fetch("http://localhost:5000/api/v1/admin/users", {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
-        Cookie: allCookies, // সার্ভারকে কুকি পাস করা হচ্ছে
+        Cookie: allCookies,
       },
       cache: "no-store",
     });
@@ -28,7 +27,6 @@ export default async function UsersPage() {
     }
 
     usersData = result?.data || [];
-    console.log("userdata: ", usersData)
   } catch (error) {
     console.error("Fetch error in UsersPage:", error);
   }

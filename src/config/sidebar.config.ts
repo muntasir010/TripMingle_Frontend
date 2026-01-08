@@ -28,8 +28,8 @@ export const sidebarItems: SidebarItem[] = [
     modes: ["ADMIN"],
   },
   {
-    label: "Trips",
-    href: "/dashboard/admin/trips",
+    label: "Publish Travel Plan",
+    href: "/dashboard/admin/travel-plans/publish",
     modes: ["ADMIN", "HOST"],
   },
   {
