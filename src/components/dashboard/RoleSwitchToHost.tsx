@@ -2,29 +2,29 @@
 
 import { useRouter } from "next/navigation";
 
-export default function RoleSwitcher() {
+export default function RoleSwitcherToHost() {
   const router = useRouter();
 
-  const switchToTourist = async () => {
+  const switchToHost = async () => {
     await fetch("http://localhost:5000/api/v1/auth/switch-role", {
       method: "PATCH",
       credentials: "include",
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({ role: "TOURIST" }),
+      body: JSON.stringify({ role: "HOST" }),
     });
 
-    router.push("/dashboard");
+    router.push("/dashboard/host");
     router.refresh();
   };
 
   return (
     <button
-      onClick={switchToTourist}
+      onClick={switchToHost}
       className="w-full rounded-lg border px-4 py-2 text-sm font-semibold text-blue-600 hover:bg-blue-50"
     >
-      Switch to Tourist
+      Switch to Host
     </button>
   );
 }

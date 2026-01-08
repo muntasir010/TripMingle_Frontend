@@ -1,26 +1,38 @@
 "use client";
-// import AdminNavbar from "@/components/dashboard/AdminNavbar";
 import AdminSidebar from "../../../../components/dashboard/AdminSidebar";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { useRouter } from "next/navigation";
 
 export default function AdminLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
+  const router = useRouter();
+  const [loading, setLoading] = useState(true);
+  const [isCollapsed, setIsCollapsed] = useState(false);
 
-const [isCollapsed, setIsCollapsed] = useState(false);
+  useEffect(() => {
+    fetch("http://localhost:5000/api/v1/profile/me", {
+      credentials: "include",
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        if (!data.success || data.data.role !== "ADMIN") {
+          router.replace("/dashboard");
+        } else {
+          setLoading(false);
+        }
+      })
+      .catch(() => router.replace("/login"));
+  }, [router]);
+
+  if (loading) return <p className="p-6 text-center">Checking admin access...</p>;
+
   return (
-    <div className="flex min-h-screen">
-      <div className="w-64 hidden md:block">
-        <AdminSidebar isCollapsed={isCollapsed} setIsCollapsed={setIsCollapsed} />
-      </div>
-      <div className="flex-1 flex flex-col">
-        <header className="h-16 bg-white border-b sticky top-0 z-10 flex items-center px-8">
-          {/* <AdminNavbar isCollapsed={isCollapsed} setIsCollapsed={setIsCollapsed} /> */}
-        </header>
-        <main className="flex-1 p-6">{children}</main>
-      </div>
+    <div className={`flex-1 flex flex-col transition-all duration-300 ${isCollapsed ? "pl-16 md:pl-20" : "pl-64"}`}>
+      <AdminSidebar isCollapsed={isCollapsed} setIsCollapsed={setIsCollapsed} />
+      <main className=" p-6">{children}</main>
     </div>
   );
 }

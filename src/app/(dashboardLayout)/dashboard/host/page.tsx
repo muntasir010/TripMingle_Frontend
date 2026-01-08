@@ -1,7 +1,3 @@
-import HostSidebar from "../../../../components/dashboard/HostSidebar";
-
 export default function HostPage() {
-  return <h1 className="text-2xl">
-    <HostSidebar user={{ role: "HOST", hostStatus: "APPROVED" }} />
-  </h1>;
+  return <h1 className="text-2xl text-center">This Is Host Dashboard</h1>;
 }
