@@ -10,7 +10,7 @@ export default async function UsersPage() {
     const cookieStore = await cookies();
     const allCookies = cookieStore.toString();
 
-    const res = await fetch("http://localhost:5000/api/v1/admin/users", {
+    const res = await fetch("${process.env.NEXT_PUBLIC_API_URL}/admin/users", {
       method: "GET",
       headers: {
         "Content-Type": "application/json",

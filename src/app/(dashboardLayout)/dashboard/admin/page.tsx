@@ -9,7 +9,7 @@ export default function AdminDashboard() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    fetch("http://localhost:5000/api/v1/admin/stats", {
+    fetch("${process.env.NEXT_PUBLIC_API_URL}/admin/stats", {
       credentials: "include",
     })
       .then((res) => res.json())

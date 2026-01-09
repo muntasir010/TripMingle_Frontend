@@ -19,7 +19,7 @@ export default function LoginPage() {
 //     setLoading(true);
 
 //     try {
-//       const res = await fetch("http://localhost:5000/api/v1/auth/login", {
+//       const res = await fetch("${process.env.NEXT_PUBLIC_API_URL}/auth/login", {
 //         method: "POST",
 //         headers: {
 //           "Content-Type": "application/json",
@@ -51,7 +51,7 @@ const handleLogin = async (e: React.FormEvent) => {
   setLoading(true);
 
   try {
-    const res = await fetch("http://localhost:5000/api/v1/auth/login", {
+    const res = await fetch("${process.env.NEXT_PUBLIC_API_URL}/auth/login", {
       method: "POST",
       credentials: "include",
       headers: {

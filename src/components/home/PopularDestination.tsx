@@ -10,7 +10,7 @@ export default function PopularDestinations() {
    console.log(plans)
 
   useEffect(() => {
-    fetch("http://localhost:5000/api/v1/travel-plans")
+    fetch("${process.env.NEXT_PUBLIC_API_URL}/travel-plans")
       .then((res) => res.json())
       .then((data) => setPlans(data.data));
   }, []);

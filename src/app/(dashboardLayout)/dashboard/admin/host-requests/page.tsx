@@ -17,7 +17,7 @@ export default function HostRequestsPage() {
 
   const fetchRequests = async () => {
     try {
-      const res = await fetch("http://localhost:5000/api/v1/admin/host-requests", {
+      const res = await fetch("${process.env.NEXT_PUBLIC_API_URL}/admin/host-requests", {
         credentials: "include",
       });
       const result = await res.json();
@@ -37,7 +37,7 @@ export default function HostRequestsPage() {
 
   const handleAction = async (id: number, action: "approve" | "reject") => {
     try {
-      const res = await fetch(`http://localhost:5000/api/v1/host/${id}/${action}`, {
+      const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/host/${id}/${action}`, {
         method: "PATCH",
         credentials: "include",
       });

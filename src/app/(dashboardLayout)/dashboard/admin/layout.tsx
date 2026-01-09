@@ -13,7 +13,7 @@ export default function AdminLayout({
   const [isCollapsed, setIsCollapsed] = useState(false);
 
   useEffect(() => {
-    fetch("http://localhost:5000/api/v1/profile/me", {
+    fetch("${process.env.NEXT_PUBLIC_API_URL}/profile/me", {
       credentials: "include",
     })
       .then((res) => res.json())

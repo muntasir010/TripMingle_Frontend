@@ -9,7 +9,7 @@ export function RoleSelect({
 }) {
   const changeRole = async (newRole: string) => {
     await fetch(
-      `http://localhost:5000/api/v1/admin/users/${userId}/role`,
+      `${process.env.NEXT_PUBLIC_API_URL}/admin/users/${userId}/role`,
       {
         method: "PATCH",
         credentials: "include",

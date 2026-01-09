@@ -19,7 +19,7 @@ export default function AdminTravelPlans() {
     try {
       setLoading(true);
       const res = await fetch(
-        "http://localhost:5000/api/v1/travel-plans/approved?pending=true",
+        "${process.env.NEXT_PUBLIC_API_URL}/travel-plans/approved?pending=true",
         { credentials: "include", cache: "no-store" }
       );
 
@@ -40,41 +40,25 @@ export default function AdminTravelPlans() {
     fetchPlans();
   }, [fetchPlans]);
 
-  // const handlePublish = async (id: number) => {
-  //   try {
-  //     const res = await fetch(
-  //       `http://localhost:5000/api/v1/travel-plans/${id}/publish`,
-  //       {
-  //         method: "PATCH",
-  //         credentials: "include",
-  //       }
-  //     );
+  const handlePublish = async (id: number) => {
+    try {
+      const res = await fetch(
+        `${process.env.NEXT_PUBLIC_API_URL}/travel-plans/${id}/publish`,
+        {
+          method: "PATCH",
+          credentials: "include",
+        }
+      );
 
-  //     if (!res.ok) throw new Error("Publish failed");
+      if (!res.ok) throw new Error("Publish failed");
 
-  //     toast.success("Travel Plan Published/Approved!");
-  //     fetchPlans();
-  //   } catch (error) {
-  //     toast.error("Could not publish the plan");
-  //   }
-  // };
-const handlePublish = async (id: number) => {
-  try {
-    const res = await fetch(`http://localhost:5000/api/v1/travel-plans/${id}/publish`, {
-      method: "PATCH",
-      credentials: "include",
-    });
+      toast.success("Travel Plan Published!");
 
-    if (!res.ok) throw new Error("Publish failed");
-
-    toast.success("Travel Plan Published!");
-    
-    setPlans((prevPlans) => prevPlans.filter(plan => plan.id !== id));
-    
-  } catch (error) {
-    toast.error("Could not publish the plan");
-  }
-};
+      setPlans((prevPlans) => prevPlans.filter((plan) => plan.id !== id));
+    } catch (error) {
+      toast.error("Could not publish the plan");
+    }
+  };
   return (
     <div className="p-6 max-w-7xl mx-auto">
       <div className="flex justify-between items-center mb-8">
