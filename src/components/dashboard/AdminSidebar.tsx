@@ -9,6 +9,8 @@ import {
   Settings,
   ListCollapseIcon,
   ExpandIcon,
+  Home,
+  User,
 } from "lucide-react";
 
 interface SidebarProps {
@@ -20,6 +22,7 @@ export default function Sidebar({ isCollapsed, setIsCollapsed }: SidebarProps) {
   const pathname = usePathname();
 
   const menuItems = [
+    { name: "Back To Home", href: "/", icon: Home },
     { name: "Dashboard", href: "/dashboard/admin", icon: LayoutDashboard },
     { name: "Users", href: "/dashboard/admin/users", icon: Users },
     {
@@ -28,6 +31,7 @@ export default function Sidebar({ isCollapsed, setIsCollapsed }: SidebarProps) {
       icon: Shield,
     },
     { name: "Travel Plans", href: "/dashboard/admin/plans", icon: Map },
+
     { name: "Settings", href: "/dashboard/admin/settings", icon: Settings },
   ];
 

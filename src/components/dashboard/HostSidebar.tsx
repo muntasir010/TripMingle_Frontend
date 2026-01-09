@@ -9,7 +9,8 @@ import {
   Star,
   ListCollapseIcon,
   ExpandIcon,
-  Pen
+  Pen,
+  Home
 } from "lucide-react";
 import RoleSwitcherToTourist from "./RoleSwitcherToTourist";
 type Props = {
@@ -31,6 +32,7 @@ export default function HostSidebar({ user, isCollapsed, setIsCollapsed }: Props
     { label: "Requests", href: "/dashboard/host/requests", icon: UserPlus },
     { label: "Earnings", href: "/dashboard/host/earnings", icon: BadgeDollarSign },
     { label: "Reviews", href: "/dashboard/host/reviews", icon: Star },
+     { name: "Back To Home", href: "/", icon: Home },
   ];
 
   return (

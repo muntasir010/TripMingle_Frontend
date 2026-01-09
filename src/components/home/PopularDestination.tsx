@@ -51,7 +51,7 @@ export default function PopularDestinations() {
               <div className="relative h-64 sm:h-72 w-full overflow-hidden">
                 <img
                   // src={`${process.env.NEXT_PUBLIC_API_URL}${plan.photoURL}`}
-                  src={`http://localhost:5000${plan.photoURL}`}
+                  src={`${process.env.NEXT_PUBLIC_API_URL}${plan.photoURL}`}
                   alt={plan.name}
                   className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
                 />

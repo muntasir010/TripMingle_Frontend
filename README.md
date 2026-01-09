@@ -1,36 +1,64 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 🌍 TripMingle - Professional Travel Buddy Platform
 
-## Getting Started
+TripMingle is a high-performance, responsive web application built with Next.js 15. It serves as a social bridge for travelers, enabling them to share itineraries, discover popular destinations, and find compatible travel partners for their journeys.
 
-First, run the development server:
+## 🚀 Overview
+TripMingle simplifies the process of group travel. Users can browse upcoming trips, while specialized "Hosts" can propose plans. The platform ensures quality control through an Admin Approval system, making it a trusted ecosystem for the travel community.
 
-```bash
+## ✨ Key Features
+- **Modern User Interface:** Built with Tailwind CSS and Framer Motion for smooth animations and a premium look.
+- **Dynamic Routing:** Utilizes Next.js App Router for optimized navigation and SEO-friendly pages.
+- **Role-Based Dashboards:** - **Admin:** Review, approve, and manage pending travel plans and platform stats.
+  - **Host:** Create, edit, and track participation in travel itineraries.
+  - **User:** Explore trips, join groups, and manage personal profiles.
+- **Advanced Search Engine:** Filter trips by destination, budget, duration, and interests.
+- **Real-time Notifications:** Integrated with React Hot Toast for instant user feedback.
+
+## 🛠 Technology Stack
+- **Framework:** Next.js 15 (Turbopack enabled)
+- **Styling:** Tailwind CSS
+- **Icons:** Lucide React
+- **Client State:** React Context API
+- **Data Fetching:** Fetch API with unwrap Promise patterns
+- **Form Handling:** React Hook Form 
+
+## 📦 Project Structure
+- `src/app/`: Next.js App Router files (Pages, Layouts).
+- `src/components/`: Reusable UI components (Navbar, Footer, Travel Cards).
+- `src/context/`: Authentication and Global State management.
+- `src/app/(dashboardLayout)/`: Grouped layouts for Admin, Host, and User dashboards.
+
+## ⚙️ Installation & Setup
+1. **Clone the Project:**
+   ```bash
+   git clone [https://github.com/muntasir010/TripMingle_Frontend]
+
+## Install Dependencies:
+
+Bash
+
+npm install
+Environment Configuration: Create a .env.local file:
+
+### Code snippet
+
+NEXT_PUBLIC_API_URL=https://tripmingle-backend.onrender.com/api/v1
+NEXT_PUBLIC_BACKEND_URL=https://tripmingle.vercel.app
+
+### Development Mode:
+Bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### Build for Production:
+Bash
+npm run build
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### 🌐 Deployment
+This project is configured for automated deployment via Vercel.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+#### Frontend Deployment: https://tripmingle.vercel.app
+#### Backend Deployment: https://tripmingle-backend.onrender.com
 
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+#### Admin credential:
+email: travel@admin.com
+password: 12345678

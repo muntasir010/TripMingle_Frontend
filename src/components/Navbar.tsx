@@ -10,8 +10,14 @@ import { useEffect, useState } from "react";
 const navItems = [
   { label: "Home", href: "/" },
   { label: "Explore Travelers", href: "/explore" },
-  { label: "Find Travel Buddy", href: "/travel-plans" },
+  { label: "Find Travel Plans", href: "/travel-plans" },
 ];
+
+const DASHBOARD_LINKS = {
+  ADMIN: "/dashboard/admin/stats",
+  HOST: "/dashboard/host/my-plans",
+  USER: "/dashboard/user/profile",
+};
 
 export default function Navbar() {
   const pathname = usePathname();
@@ -28,10 +34,13 @@ export default function Navbar() {
 
     const fetchProfile = async () => {
       try {
-        const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/users/profile`, {
-          method: "GET",
-          credentials: "include",
-        });
+        const res = await fetch(
+          `${process.env.NEXT_PUBLIC_API_URL}/users/profile`,
+          {
+            method: "GET",
+            credentials: "include",
+          }
+        );
         const data = await res.json();
 
         if (data.success) {
@@ -102,7 +111,7 @@ export default function Navbar() {
               {item.label}
             </Link>
           ))}
-            {userData?.role === "HOST" && (
+          {userData?.role === "HOST" && (
             <Link
               href="/dashboard/host/create-plan"
               className={`text-sm font-medium transition ${
@@ -136,7 +145,7 @@ export default function Navbar() {
           ) : (
             <div className="relative">
               {/* Avatar Button */}
-              <button
+              {/* <button
                 onClick={() => setUserMenuOpen(!userMenuOpen)}
                 className="flex items-center border-2 border-blue-500 rounded-full focus:outline-none"
               >
@@ -150,10 +159,10 @@ export default function Navbar() {
                   alt="Avatar"
                   className="h-9 w-9 rounded-full object-cover"
                 />
-              </button>
+              </button> */}
 
               {/* Dropdown Menu */}
-              {userMenuOpen && (
+              {/* {userMenuOpen && (
                 <div className="absolute right-0 mt-2 w-60 rounded-xl bg-white p-4 shadow-xl border z-50">
                   <div className="flex flex-col items-center mb-4 border-b pb-3">
                     <p className="text-sm font-bold text-gray-800 line-clamp-1">
@@ -174,6 +183,63 @@ export default function Navbar() {
                     <button
                       onClick={handleLogout}
                       className="w-full text-left px-3 py-2 text-sm text-red-600 hover:bg-red-50 rounded-lg font-medium"
+                    >
+                      Logout
+                    </button>
+                  </div>
+                </div>
+              )} */}
+              {userData && (
+                <div className="group relative">
+                  <img
+                    src={
+                      userData.profilePhoto ||
+                      "https://i.ibb.co.com/zWjwgLsH/db40c047-22e9-48cc-9f0b-3832ff87e92e.jpg"
+                    }
+                    className="w-10 h-10 rounded-full cursor-pointer"
+                  />
+
+                  <div className="hidden group-hover:block absolute right-0 w-48 bg-white border rounded-xl shadow-xl p-2">
+                    <p className="text-xs text-gray-400 px-3 py-1 uppercase font-bold">
+                      {userData.role}
+                    </p>
+
+                    {userData.role === "ADMIN" && (
+                      <Link
+                        href="/dashboard/admin/stats"
+                        className="block px-3 py-2 hover:bg-gray-100 rounded-md"
+                      >
+                        Admin Panel
+                      </Link>
+                    )}
+
+                    {userData.role === "HOST" && (
+                      <Link
+                        href="/dashboard/host/my-plans"
+                        className="block px-3 py-2 hover:bg-gray-100 rounded-md"
+                      >
+                        Host Panel
+                      </Link>
+                    )}
+                    {userData.role === "TOURIST" && (
+                      <Link
+                        href="/dashboard/tourist/my-trips"
+                        className="block px-3 py-2 hover:bg-gray-100 rounded-md"
+                      >
+                        My Trips
+                      </Link>
+                    )}
+
+                    <Link
+                      href="/dashboard/profile"
+                      className="block px-3 py-2 hover:bg-gray-100 rounded-md"
+                    >
+                      Profile
+                    </Link>
+                    <hr className="my-1" />
+                    <button
+                      onClick={handleLogout}
+                      className="w-full text-left px-3 py-2 text-red-500 hover:bg-red-50 rounded-md"
                     >
                       Logout
                     </button>
@@ -206,7 +272,7 @@ export default function Navbar() {
               {item.label}
             </Link>
           ))}
-            {userData?.role === "HOST" && (
+          {userData?.role === "HOST" && (
             <Link
               href="/dashboard/host/create-plan"
               className={`text-sm font-medium transition ${

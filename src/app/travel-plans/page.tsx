@@ -56,7 +56,7 @@ export default function ExplorePlans() {
               <div className="relative h-64 sm:h-72 w-full overflow-hidden">
                 <img
                   // src={`${process.env.NEXT_PUBLIC_API_URL}${plan.photoURL}`}
-                  src={`http://localhost:5000${plan.photoURL}`}
+                  src={`${process.env.NEXT_PUBLIC_API_URL}${plan.photoURL}`}
                   alt={plan.name}
                   className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
                 />
@@ -76,22 +76,24 @@ export default function ExplorePlans() {
 
               {/* Details */}
               <div className="p-6">
-                <div className=" items-start gap-2 mb-2">
+                <div className="flex items-start gap-2 mb-2">
                   <MapPin size={18} className="text-blue-500 shrink-0 mt-1" />
-                  <h3 className="text-xl font-semibold text-gray-900 group-hover:text-blue-600 transition-colors">
-                    {plan.title}
-                  </h3>
-                  <h3 className="text-lg font-semibold text-gray-900 group-hover:text-blue-600 transition-colors">
+                  <h3 className="text-sm font-semibold text-gray-900 group-hover:text-blue-600 transition-colors">
                     {plan.destination}
                   </h3>
                 </div>
+                <h3 className="text-xl font-bold text-gray-900 group-hover:text-blue-600 transition-colors">
+                  {plan.title}
+                </h3>
                 <p className="text-gray-500 text-lg pl-7">৳: {plan.budget}</p>
 
                 <div className="mt-6 pt-6 border-t border-gray-50 flex items-center justify-between">
                   <span className="text-sm font-semibold text-gray-400">
                     View Details
                   </span>
-                  <button onClick={() => router.push(`/travel-plans/${plan.id}`)}></button>
+                  <button
+                    onClick={() => router.push(`/travel-plans/${plan.id}`)}
+                  ></button>
                   <div className="w-8 h-8 rounded-full bg-gray-100 flex items-center justify-center group-hover:bg-blue-600 group-hover:text-white transition-all">
                     <ArrowRight size={16} />
                   </div>

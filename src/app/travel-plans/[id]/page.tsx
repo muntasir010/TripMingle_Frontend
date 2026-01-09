@@ -22,7 +22,7 @@ export default function TravelPlanDetails({
   return (
     <div className="max-w-5xl my-10 md:my-20 mx-auto p-6 border border-gray-100 rounded-xl shadow-2xl">
       <img
-        src={`http://localhost:5000${plan.photoURL}`}
+        src={`${process.env.NEXT_PUBLIC_API_URL}${plan.photoURL}`}
         className="w-full h-[400px] object-cover rounded-2xl"
       />
 

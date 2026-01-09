@@ -9,6 +9,7 @@ import {
   User,
   ExpandIcon,
   ListCollapseIcon,
+  Home,
 } from "lucide-react";
 import RoleSwitcherToHost from "./RoleSwitchToHost";
 
@@ -32,7 +33,8 @@ export default function TouristSidebar({
     { name: "Dashboard", href: "/dashboard/tourist", icon: LayoutDashboard },
     { name: "My Trips", href: "/dashboard/tourist/trips", icon: Map },
     { name: "Wishlist", href: "/dashboard/tourist/wishlist", icon: Heart },
-    { name: "Profile", href: "/dashboard/tourist/profile", icon: User },
+    { name: "Profile", href: "/dashboard/profile", icon: User },
+    { name: "Back To Home", href: "/", icon: Home },
   ];
 
   return (
