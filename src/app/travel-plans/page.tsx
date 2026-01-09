@@ -1,21 +1,23 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 "use client";
-
 import { MapPin, Users, ArrowRight } from "lucide-react";
 import { motion } from "framer-motion";
-import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
+import { useEffect, useState } from "react";
 
-export default function PopularDestinations() {
+export default function ExplorePlans() {
   const [plans, setPlans] = useState<any[]>([]);
+  const [page, setPage] = useState(1);
   const router = useRouter();
-  
 
   useEffect(() => {
-    fetch(`${process.env.NEXT_PUBLIC_API_URL}/travel-plans?limit=4`)
+    fetch(
+      `${process.env.NEXT_PUBLIC_API_URL}/travel-plans?page=${page}&limit=8`
+    )
       .then((res) => res.json())
       .then((data) => setPlans(data.data));
-  }, []);
+  }, [page]);
+
   return (
     <section className="py-16 md:py-24 bg-gray-50">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
@@ -30,7 +32,10 @@ export default function PopularDestinations() {
               planning their next meetups. Join them and make new friends!
             </p>
           </div>
-          <button onClick={()=> router.push(`/travel-plans`)} className="flex items-center gap-2 text-blue-600 font-semibold hover:gap-3 transition-all">
+          <button
+            onClick={() => router.push(`/travel-plans`)}
+            className="flex items-center gap-2 text-blue-600 font-semibold hover:gap-3 transition-all"
+          >
             Explore All <ArrowRight size={20} />
           </button>
         </div>
@@ -86,7 +91,7 @@ export default function PopularDestinations() {
                   <span className="text-sm font-semibold text-gray-400">
                     View Details
                   </span>
-                  <button onClick={() => router.push("/travel-plans")}></button>
+                  <button onClick={() => router.push(`/travel-plans/${plan.id}`)}></button>
                   <div className="w-8 h-8 rounded-full bg-gray-100 flex items-center justify-center group-hover:bg-blue-600 group-hover:text-white transition-all">
                     <ArrowRight size={16} />
                   </div>
