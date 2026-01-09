@@ -28,7 +28,7 @@ export default function Navbar() {
 
     const fetchProfile = async () => {
       try {
-        const res = await fetch("${process.env.NEXT_PUBLIC_API_URL}/users/profile", {
+        const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/users/profile`, {
           method: "GET",
           credentials: "include",
         });
@@ -51,7 +51,7 @@ export default function Navbar() {
 
   const handleLogout = async () => {
     try {
-      await fetch("${process.env.NEXT_PUBLIC_API_URL}/auth/logout", {
+      await fetch(`${process.env.NEXT_PUBLIC_API_URL}/auth/logout`, {
         method: "POST",
         credentials: "include",
       });

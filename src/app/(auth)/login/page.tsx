@@ -13,45 +13,13 @@ export default function LoginPage() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
 
-//   const handleLogin = async (e: React.FormEvent) => {
-//     e.preventDefault();
-//     setError("");
-//     setLoading(true);
-
-//     try {
-//       const res = await fetch("${process.env.NEXT_PUBLIC_API_URL}/auth/login", {
-//         method: "POST",
-//         headers: {
-//           "Content-Type": "application/json",
-//         },
-//         body: JSON.stringify({ email, password }),
-//       });
-
-//       const result = await res.json();
-
-//       if (!res.ok) {
-//         throw new Error(result.message || "Login failed");
-//       }
-
-//       localStorage.setItem("accessToken", result.data.accessToken);
-
-//       alert("Logged in successfully!");
-
-//       router.push("/");
-//       router.refresh();
-//     } catch (err: any) {
-//       setError(err.message);
-//     } finally {
-//       setLoading(false);
-//     }
-//   };
 const handleLogin = async (e: React.FormEvent) => {
   e.preventDefault();
   setError("");
   setLoading(true);
 
   try {
-    const res = await fetch("${process.env.NEXT_PUBLIC_API_URL}/auth/login", {
+    const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/auth/login`, {
       method: "POST",
       credentials: "include",
       headers: {

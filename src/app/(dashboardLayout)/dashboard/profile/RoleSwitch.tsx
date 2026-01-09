@@ -6,7 +6,7 @@ export default function RoleSwitch({
   activeRole: "HOST" | "TOURIST";
 }) {
   const switchRole = async () => {
-    await fetch("${process.env.NEXT_PUBLIC_API_URL}/auth/switch-role", {
+    await fetch(`${process.env.NEXT_PUBLIC_API_URL}/auth/switch-role`, {
       method: "PATCH",
       credentials: "include",
       headers: { "Content-Type": "application/json" },

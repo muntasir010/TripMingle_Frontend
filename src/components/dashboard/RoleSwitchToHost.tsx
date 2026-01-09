@@ -6,7 +6,7 @@ export default function RoleSwitcherToHost() {
   const router = useRouter();
 
   const switchToHost = async () => {
-    await fetch("${process.env.NEXT_PUBLIC_API_URL}/auth/switch-role", {
+    await fetch(`${process.env.NEXT_PUBLIC_API_URL}/auth/switch-role`, {
       method: "PATCH",
       credentials: "include",
       headers: {

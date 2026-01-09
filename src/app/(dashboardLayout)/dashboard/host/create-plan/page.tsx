@@ -46,7 +46,7 @@ export default function CreatePlanPage() {
 
       formData.append("file", image);
 
-      const res = await fetch("${process.env.NEXT_PUBLIC_API_URL}/travel-plans", {
+      const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/travel-plans`, {
         method: "POST",
         credentials: "include",
         body: formData,

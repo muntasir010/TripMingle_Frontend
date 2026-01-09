@@ -13,7 +13,7 @@ export default function HostLayout({ children }: any) {
   const [userData, setUserData] = useState<any>(null);
 
   useEffect(() => {
-    fetch("${process.env.NEXT_PUBLIC_API_URL}/profile/me", {
+    fetch(`${process.env.NEXT_PUBLIC_API_URL}/profile/me`, {
       credentials: "include",
     })
       .then((res) => res.json())

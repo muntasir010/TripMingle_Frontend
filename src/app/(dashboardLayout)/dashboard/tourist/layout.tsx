@@ -12,7 +12,7 @@ export default function TouristLayout({ children }: any) {
   const [isCollapsed, setIsCollapsed] = useState(false);
 
   useEffect(() => {
-    fetch("${process.env.NEXT_PUBLIC_API_URL}/profile/me", {
+    fetch(`${process.env.NEXT_PUBLIC_API_URL}/profile/me`, {
       credentials: "include",
     })
       .then((res) => res.json())

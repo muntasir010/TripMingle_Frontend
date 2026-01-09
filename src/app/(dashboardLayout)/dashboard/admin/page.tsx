@@ -9,7 +9,7 @@ export default function AdminDashboard() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    fetch("${process.env.NEXT_PUBLIC_API_URL}/admin/stats", {
+    fetch(`${process.env.NEXT_PUBLIC_API_URL}/admin/stats`, {
       credentials: "include",
     })
       .then((res) => res.json())
@@ -23,7 +23,6 @@ export default function AdminDashboard() {
 
   if (loading) return <p>Loading...</p>;
   if (!data) return <p>No data found</p>;
-  console.log(data);
 
   return (
     <div>

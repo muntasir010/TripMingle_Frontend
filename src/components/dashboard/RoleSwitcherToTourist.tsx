@@ -6,7 +6,7 @@ export default function RoleSwitcherToTourist() {
   const router = useRouter();
 
   const switchToTourist = async () => {
-    await fetch("${process.env.NEXT_PUBLIC_API_URL}/auth/switch-role", {
+    await fetch(`${process.env.NEXT_PUBLIC_API_URL}/auth/switch-role`, {
       method: "PATCH",
       credentials: "include",
       headers: {

@@ -17,7 +17,7 @@ export default function HostRequestsPage() {
 
   const fetchRequests = async () => {
     try {
-      const res = await fetch("${process.env.NEXT_PUBLIC_API_URL}/admin/host-requests", {
+      const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/admin/host-requests`, {
         credentials: "include",
       });
       const result = await res.json();

@@ -21,13 +21,13 @@ export default function ProfilePage() {
 
   // 🔹 Load user + application status
   useEffect(() => {
-    fetch("${process.env.NEXT_PUBLIC_API_URL}/users/profile", {
+    fetch(`${process.env.NEXT_PUBLIC_API_URL}/users/profile`, {
       credentials: "include",
     })
       .then(res => res.json())
       .then(data => setUser(data.data));
 
-    fetch("${process.env.NEXT_PUBLIC_API_URL}/host/me", {
+    fetch(`${process.env.NEXT_PUBLIC_API_URL}/host/me`, {
       credentials: "include",
     })
       .then(res => res.json())
@@ -39,7 +39,7 @@ export default function ProfilePage() {
     setLoading(true);
 
     const res = await fetch(
-      "${process.env.NEXT_PUBLIC_API_URL}/host/apply",
+      `${process.env.NEXT_PUBLIC_API_URL}/host/apply`,
       {
         method: "POST",
         credentials: "include",

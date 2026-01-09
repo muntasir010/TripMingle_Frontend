@@ -19,7 +19,7 @@ export default function AdminTravelPlans() {
     try {
       setLoading(true);
       const res = await fetch(
-        "${process.env.NEXT_PUBLIC_API_URL}/travel-plans/approved?pending=true",
+        `${process.env.NEXT_PUBLIC_API_URL}/travel-plans/approved?pending=true`,
         { credentials: "include", cache: "no-store" }
       );
 

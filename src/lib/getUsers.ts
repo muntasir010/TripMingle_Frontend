@@ -14,7 +14,7 @@ export async function getUser(): Promise<AuthUser | null> {
     if (!token) return null;
 
     const res = await fetch(
-      "${process.env.NEXT_PUBLIC_API_URL}/users/profile",
+      `${process.env.NEXT_PUBLIC_API_URL}/users/profile`,
       {
         method: "GET",
         headers: {

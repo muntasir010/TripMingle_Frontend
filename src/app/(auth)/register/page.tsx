@@ -32,7 +32,7 @@ export default function RegisterPage() {
       formData.append("data", JSON.stringify(payload));
 
       const res = await fetch(
-        "${process.env.NEXT_PUBLIC_API_URL}/users/create-tourist",
+        `${process.env.NEXT_PUBLIC_API_URL}/users/create-tourist`,
         {
           method: "POST",
           body: formData, 
