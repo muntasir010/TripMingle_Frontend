@@ -1,44 +1,19 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 "use client";
 
 import { MapPin, Users, ArrowRight } from "lucide-react";
 import { motion } from "framer-motion";
-
-const destinations = [
-  {
-    id: 1,
-    name: "Sajek Valley",
-    location: "Rangamati, Bangladesh",
-    image: "https://images.unsplash.com/photo-1623492701902-47dc207df5dc?q=80&w=2070",
-    buddies: "12+ Buddies",
-    category: "Mountain",
-  },
-  {
-    id: 2,
-    name: "Bali",
-    location: "Indonesia",
-    image: "https://images.unsplash.com/photo-1537996194471-e657df975ab4?q=80&w=2070",
-    buddies: "25+ Buddies",
-    category: "Beach",
-  },
-  {
-    id: 3,
-    name: "Santorini",
-    location: "Greece",
-    image: "https://images.unsplash.com/photo-1570077188670-e3a8d69ac5ff?q=80&w=2070",
-    buddies: "8+ Buddies",
-    category: "Island",
-  },
-  {
-    id: 4,
-    name: "Cox's Bazar",
-    location: "Chittagong, Bangladesh",
-    image: "https://images.unsplash.com/photo-1582650625119-3a31f8fa2699?q=80&w=2070",
-    buddies: "40+ Buddies",
-    category: "Beach",
-  },
-];
+import { useEffect, useState } from "react";
 
 export default function PopularDestinations() {
+   const [plans, setPlans] = useState<any[]>([]);
+   console.log(plans)
+
+  useEffect(() => {
+    fetch("http://localhost:5000/api/v1/travel-plans")
+      .then((res) => res.json())
+      .then((data) => setPlans(data.data));
+  }, []);
   return (
     <section className="py-16 md:py-24 bg-gray-50">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
@@ -60,9 +35,9 @@ export default function PopularDestinations() {
 
         {/* Destinations Grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
-          {destinations.map((dest, index) => (
+          {plans.map((plan, index) => (
             <motion.div
-              key={dest.id}
+              key={plan.id}
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
@@ -72,19 +47,19 @@ export default function PopularDestinations() {
               {/* Image Container */}
               <div className="relative h-64 sm:h-72 w-full overflow-hidden">
                 <img
-                  src={dest.image}
-                  alt={dest.name}
+                  src={`http://localhost:5000${plan.photoURL}`}
+                  alt={plan.name}
                   className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
                 />
                 <div className="absolute top-4 left-4">
                   <span className="bg-white/90 backdrop-blur-md px-3 py-1 rounded-full text-xs font-bold text-blue-600 uppercase">
-                    {dest.category}
+                    {plan.travelType}
                   </span>
                 </div>
                 {/* Floating Buddy Count */}
                 <div className="absolute bottom-4 left-4 right-4 bg-black/20 backdrop-blur-md rounded-2xl p-3 text-white flex items-center gap-2">
                   <Users size={16} className="text-blue-400" />
-                  <span className="text-xs font-medium">{dest.buddies} are looking for buddies</span>
+                  <span className="text-xs font-medium">{plan.buddies} We are looking for buddies</span>
                 </div>
               </div>
 
@@ -93,10 +68,13 @@ export default function PopularDestinations() {
                 <div className="flex items-start gap-2 mb-2">
                   <MapPin size={18} className="text-blue-500 shrink-0 mt-1" />
                   <h3 className="text-xl font-bold text-gray-900 group-hover:text-blue-600 transition-colors">
-                    {dest.name}
+                    {plan.title}
+                  </h3>
+                  <h3 className="text-xl font-bold text-gray-900 group-hover:text-blue-600 transition-colors">
+                    {plan.destination}
                   </h3>
                 </div>
-                <p className="text-gray-500 text-sm pl-7">{dest.location}</p>
+                <p className="text-gray-500 text-lg pl-7">৳: {plan.budget}</p>
                 
                 <div className="mt-6 pt-6 border-t border-gray-50 flex items-center justify-between">
                   <span className="text-sm font-semibold text-gray-400">View Details</span>
@@ -110,5 +88,6 @@ export default function PopularDestinations() {
         </div>
       </div>
     </section>
+  
   );
 }

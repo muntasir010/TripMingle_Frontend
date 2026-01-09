@@ -10,13 +10,14 @@ import {
   Users,
   Calendar,
   Plane,
+  Heading,
 } from "lucide-react";
 import toast from "react-hot-toast";
 
 export default function CreatePlanPage() {
   const router = useRouter();
   const [form, setForm] = useState<any>({
-    travelType: "Solo", // Default value for enum
+    travelType: "Solo",
   });
   const [image, setImage] = useState<File | null>(null);
   const [loading, setLoading] = useState(false);
@@ -34,6 +35,7 @@ export default function CreatePlanPage() {
     try {
       const formData = new FormData();
 
+      formData.append("title", form.title);
       formData.append("destination", form.destination);
       formData.append("budget", String(form.budget));
       formData.append("capacity", String(form.capacity));
@@ -79,15 +81,32 @@ export default function CreatePlanPage() {
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         <div className="md:col-span-2 space-y-2">
-          <label className="text-sm font-semibold text-gray-700 flex items-center gap-2">
-            <MapPin size={16} /> Destination
-          </label>
-          <input
-            required
-            className="w-full px-4 py-2.5 rounded-xl border border-gray-200 focus:ring-2 focus:ring-blue-100 outline-none transition-all"
-            placeholder="e.g. Cox's Bazar, Saint Martin"
-            onChange={(e) => setForm({ ...form, destination: e.target.value })}
-          />
+          <div>
+            <label className="text-sm font-semibold text-gray-700 flex items-center gap-2">
+              <Heading size={16} /> Title
+            </label>
+            <input
+              required
+              className="w-full px-4 py-2.5 rounded-xl border border-gray-200 focus:ring-2 focus:ring-blue-100 outline-none transition-all"
+              placeholder="e.g. Cox's Bazar, Saint Martin"
+              onChange={(e) =>
+                setForm({ ...form, title: e.target.value })
+              }
+            />
+          </div>
+          <div>
+            <label className="text-sm font-semibold text-gray-700 flex items-center gap-2">
+              <MapPin size={16} /> Destination
+            </label>
+            <input
+              required
+              className="w-full px-4 py-2.5 rounded-xl border border-gray-200 focus:ring-2 focus:ring-blue-100 outline-none transition-all"
+              placeholder="e.g. Cox's Bazar, Saint Martin"
+              onChange={(e) =>
+                setForm({ ...form, destination: e.target.value })
+              }
+            />
+          </div>
         </div>
 
         {/* Start Date */}

@@ -8,7 +8,8 @@ import {
   BadgeDollarSign, 
   Star,
   ListCollapseIcon,
-  ExpandIcon
+  ExpandIcon,
+  Pen
 } from "lucide-react";
 import RoleSwitcherToTourist from "./RoleSwitcherToTourist";
 type Props = {
@@ -25,6 +26,7 @@ export default function HostSidebar({ user, isCollapsed, setIsCollapsed }: Props
 
   const navItems = [
     { label: "Dashboard", href: "/dashboard/host", icon: LayoutDashboard },
+    { label: "Create Plan", href: "/dashboard/host/create-plan", icon: Pen },
     { label: "My Trips", href: "/dashboard/host/trips", icon: Map },
     { label: "Requests", href: "/dashboard/host/requests", icon: UserPlus },
     { label: "Earnings", href: "/dashboard/host/earnings", icon: BadgeDollarSign },

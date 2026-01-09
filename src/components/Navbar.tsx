@@ -102,6 +102,18 @@ export default function Navbar() {
               {item.label}
             </Link>
           ))}
+            {userData?.role === "HOST" && (
+            <Link
+              href="/dashboard/host/create-plan"
+              className={`text-sm font-medium transition ${
+                pathname === "/dashboard/host/create-plan"
+                  ? "text-blue-600"
+                  : "text-gray-600 hover:text-blue-500"
+              }`}
+            >
+              Create Plan
+            </Link>
+          )}
         </div>
 
         {/* Desktop User Section */}
@@ -194,6 +206,18 @@ export default function Navbar() {
               {item.label}
             </Link>
           ))}
+            {userData?.role === "HOST" && (
+            <Link
+              href="/dashboard/host/create-plan"
+              className={`text-sm font-medium transition ${
+                pathname === "/dashboard/host/create-plan"
+                  ? "text-blue-600"
+                  : "text-gray-600 hover:text-blue-500"
+              }`}
+            >
+              Create Plan
+            </Link>
+          )}
           <hr />
           {!isLoggedIn ? (
             <div className="flex flex-col gap-3">
