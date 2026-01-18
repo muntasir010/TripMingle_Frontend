@@ -5,6 +5,7 @@
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import HostSidebar from "@/components/dashboard/HostSidebar";
+import { Loader } from "lucide-react";
 
 export default function HostLayout({ children }: any) {
   const router = useRouter();
@@ -19,7 +20,7 @@ export default function HostLayout({ children }: any) {
       .then((res) => res.json())
       .then((data) => {
         if (!data.success || data.data.role === "ADMIN") {
-          router.replace("/dashboard");
+          router.replace("/");
         } else {
           setUserData(data.data);
           setLoading(false);
@@ -28,7 +29,8 @@ export default function HostLayout({ children }: any) {
       .catch(() => router.replace("/login"));
   }, [router]);
 
-  if (loading) return <p className="p-10 text-center font-bold">Loading Host Panel...</p>;
+  if (loading) return <p className="flex justify-center items-center h-screen"><Loader size={60} className="animate-spin text-blue-500" /></p>;
+
 
   return (
     <div className="flex min-h-screen bg-gray-50">

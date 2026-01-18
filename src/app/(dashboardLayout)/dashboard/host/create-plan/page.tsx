@@ -46,17 +46,22 @@ export default function CreatePlanPage() {
 
       formData.append("file", image);
 
-      const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/travel-plans`, {
-        method: "POST",
-        credentials: "include",
-        body: formData,
-      });
+      const res = await fetch(
+        `${process.env.NEXT_PUBLIC_API_URL}/travel-plans`,
+        {
+          method: "POST",
+          credentials: "include",
+          body: formData,
+        },
+      );
 
       const result = await res.json();
 
       if (res.ok) {
         toast.success("Travel Plan Created Successfully!");
-        router.push("/dashboard/host");
+        setTimeout(() => {
+          router.push("/dashboard/host");
+        }, 1500);
       } else {
         toast.error(result.message || "Failed to create plan");
       }
@@ -89,9 +94,7 @@ export default function CreatePlanPage() {
               required
               className="w-full px-4 py-2.5 rounded-xl border border-gray-200 focus:ring-2 focus:ring-blue-100 outline-none transition-all"
               placeholder="e.g. Cox's Bazar, Saint Martin"
-              onChange={(e) =>
-                setForm({ ...form, title: e.target.value })
-              }
+              onChange={(e) => setForm({ ...form, title: e.target.value })}
             />
           </div>
           <div>

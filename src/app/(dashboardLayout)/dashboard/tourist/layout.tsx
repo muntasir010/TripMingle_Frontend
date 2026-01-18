@@ -4,6 +4,7 @@
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import TouristSidebar from "@/components/dashboard/TouristSidebar";
+import { Loader } from "lucide-react";
 
 export default function TouristLayout({ children }: any) {
   const router = useRouter();
@@ -18,7 +19,7 @@ export default function TouristLayout({ children }: any) {
       .then((res) => res.json())
       .then((data) => {
         if (!data.success || data.data.role === "ADMIN") {
-          router.replace("/dashboard");
+          router.replace("/");
         } else {
           setUser(data.data);
           setLoading(false);
@@ -26,7 +27,7 @@ export default function TouristLayout({ children }: any) {
       });
   }, [router]);
 
-  if (loading) return <p className="p-6">Loading...</p>;
+  if (loading) return <p className="flex justify-center items-center h-screen"><Loader size={60} className="animate-spin text-blue-500 "/></p>;
 
   return (
     <div className={`flex-1 flex flex-col transition-all duration-300 ${isCollapsed ? "pl-16 md:pl-20" : "pl-64"}`}>

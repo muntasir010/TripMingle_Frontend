@@ -1,5 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 "use client";
+import JoinTripModal from "@/components/trip/JoinTripModal";
 import { use, useEffect, useState } from "react";
 
 export default function TravelPlanDetails({
@@ -7,6 +8,8 @@ export default function TravelPlanDetails({
 }: {
   params: Promise<{ id: string }>;
 }) {
+  const [openJoin, setOpenJoin] = useState(false);
+  const planId = use(params).id;
   const [plan, setPlan] = useState<any>(null);
   const resolvedParams = use(params);
   const id = resolvedParams.id;
@@ -40,9 +43,19 @@ export default function TravelPlanDetails({
       <p className="text-gray-600 mt-2">Description: {plan.description}</p>
 
       <div className="flex justify-center">
-        <button className="mt-6 px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition">
-          Join Plan
+        <button
+          onClick={() => setOpenJoin(true)}
+          className="mt-6 bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-xl font-semibold"
+        >
+          Join This Trip
         </button>
+
+        {/* JOIN MODAL */}
+        <JoinTripModal
+          open={openJoin}
+          onClose={() => setOpenJoin(false)}
+          travelPlanId={Number(planId)}
+        />
       </div>
     </div>
   );

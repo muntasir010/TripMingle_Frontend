@@ -3,6 +3,7 @@
 
 import { useState } from "react";
 import { useRouter } from "next/navigation";
+import toast from "react-hot-toast";
 
 export default function RegisterPage() {
   const router = useRouter();
@@ -49,7 +50,7 @@ export default function RegisterPage() {
       }
 
       // ✅ SUCCESS
-      alert("Registration successful!");
+      toast.success("Registration successful!");
       router.push("/login");
     } catch (err: any) {
       setError(err.message);

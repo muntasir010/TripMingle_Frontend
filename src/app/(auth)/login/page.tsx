@@ -5,6 +5,7 @@
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
+import toast from "react-hot-toast";
 
 export default function LoginPage() {
   const router = useRouter();
@@ -34,7 +35,7 @@ const handleLogin = async (e: React.FormEvent) => {
       throw new Error(result.message || "Login failed");
     }
 
-    alert("Logged in successfully!");
+    toast.success("Logged in successfully!");
     router.push("/");
     router.refresh();
   } catch (err: any) {
@@ -50,7 +51,7 @@ const handleLogin = async (e: React.FormEvent) => {
           TripMingle
         </h1>
         <p className="text-gray-500 text-center mb-8">
-          Logged in successfully! Welcome back.
+          Logged in your account.
         </p>
 
         <form onSubmit={handleLogin} className="space-y-5">

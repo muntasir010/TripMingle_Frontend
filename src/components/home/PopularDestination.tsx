@@ -31,7 +31,7 @@ export default function PopularDestinations() {
             </p>
           </div>
           <button onClick={()=> router.push(`/travel-plans`)} className="flex items-center gap-2 text-blue-600 font-semibold hover:gap-3 transition-all">
-            Explore All <ArrowRight size={20} />
+            Explore All <ArrowRight size={20} /> 
           </button>
         </div>
 
@@ -80,7 +80,7 @@ export default function PopularDestinations() {
                     {plan.destination}
                   </h3>
                 </div>
-                <p className="text-gray-500 text-lg pl-7">৳: {plan.budget}</p>
+                <p className="text-gray-500 text-lg pl-7">Budget: {plan.budget} BDT</p>
 
                 <div className="mt-6 pt-6 border-t border-gray-50 flex items-center justify-between">
                   <span className="text-sm font-semibold text-gray-400">

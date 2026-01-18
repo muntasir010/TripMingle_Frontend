@@ -43,7 +43,7 @@ export default function AdminTravelPlans() {
   const handlePublish = async (id: number) => {
     try {
       const res = await fetch(
-        `${process.env.NEXT_PUBLIC_API_URL}/travel-plans/${id}/publish`,
+        `${process.env.NEXT_PUBLIC_API_URL}/travel-plans/${id}/publish/admin`,
         {
           method: "PATCH",
           credentials: "include",
