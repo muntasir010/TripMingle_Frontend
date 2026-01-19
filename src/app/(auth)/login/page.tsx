@@ -14,35 +14,45 @@ export default function LoginPage() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
 
-const handleLogin = async (e: React.FormEvent) => {
-  e.preventDefault();
-  setError("");
-  setLoading(true);
+  const handleLogin = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setError("");
+    setLoading(true);
 
-  try {
-    const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/auth/login`, {
-      method: "POST",
-      credentials: "include",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({ email, password }),
-    });
+    try {
+      const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/auth/login`, {
+        method: "POST",
+        credentials: "include",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ email, password }),
+      });
 
-    const result = await res.json();
+      const result = await res.json();
 
-    if (!res.ok) {
-      throw new Error(result.message || "Login failed");
+      if (!res.ok) {
+        throw new Error(result.message || "Login failed");
+      }
+
+      toast.success("Logged in successfully!");
+      router.push("/");
+      router.refresh();
+    } catch (err: any) {
+      setError(err.message);
+    } finally {
+      setLoading(false);
     }
+  };
 
-    toast.success("Logged in successfully!");
-    router.push("/");
-    router.refresh();
-  } catch (err: any) {
-    setError(err.message);
-  } finally {
-    setLoading(false);
-  }
+  const handleDemoLogin = async (role: "ADMIN" | "TOURIST" | "HOST") => {
+  const credentials = { email: "", password: "12345678" };
+
+  if (role === "ADMIN") credentials.email = "travel@admin.com";
+  else if (role === "TOURIST") credentials.email = "muntasir@mail.com";
+  else credentials.email = "host@mail.com";
+  setEmail(credentials.email);
+  setPassword(credentials.password);
 };
   return (
     <div className="min-h-screen flex items-center justify-center bg-gray-100 px-4">
@@ -57,7 +67,7 @@ const handleLogin = async (e: React.FormEvent) => {
         <form onSubmit={handleLogin} className="space-y-5">
           <div>
             <label className="block text-sm font-medium text-gray-700 mb-1">
-             Email
+              Email
             </label>
             <input
               type="email"
@@ -71,7 +81,7 @@ const handleLogin = async (e: React.FormEvent) => {
 
           <div>
             <label className="block text-sm font-medium text-gray-700 mb-1">
-                Password
+              Password
             </label>
             <input
               type="password"
@@ -98,13 +108,44 @@ const handleLogin = async (e: React.FormEvent) => {
           </button>
         </form>
 
+        {/* Demo Login Buttons */}
+
+        <div className="mt-6 border-t pt-4">
+          <p className="text-sm text-gray-500 text-center mb-3 font-medium">
+            Try with Demo Accounts
+          </p>
+          <div className="grid grid-cols-3 gap-4">
+            <button
+              type="button"
+              onClick={() => handleDemoLogin("ADMIN")}
+              className="px-4 py-2 text-xs font-semibold text-blue-700 bg-blue-50 border border-blue-200 rounded-lg hover:bg-blue-100 transition-all"
+            >
+              Admin Demo
+            </button>
+            <button
+              type="button"
+              onClick={() => handleDemoLogin("TOURIST")}
+              className="px-4 py-2 text-xs font-semibold text-emerald-700 bg-emerald-50 border border-emerald-200 rounded-lg hover:bg-emerald-100 transition-all"
+            >
+              Tourist
+            </button>
+            <button
+              type="button"
+              onClick={() => handleDemoLogin("HOST")}
+              className="px-4 py-2 text-xs font-semibold text-emerald-700 bg-emerald-50 border border-emerald-200 rounded-lg hover:bg-emerald-100 transition-all"
+            >
+              Host
+            </button>
+          </div>
+        </div>
+
         <div className="mt-6 text-center text-sm text-gray-600">
           Don't have an account?{" "}
           <Link
             href="/register"
             className="text-blue-600 font-semibold hover:underline"
           >
-           register here...
+            register here...
           </Link>
         </div>
       </div>

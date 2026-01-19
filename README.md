@@ -1,4 +1,4 @@
-# 🌍 TripMingle - Professional Travel Buddy Platform
+# 🌍 TripMingle - Travel Buddy Platform
 
 TripMingle is a high-performance, responsive web application built with Next.js 15. It serves as a social bridge for travelers, enabling them to share itineraries, discover popular destinations, and find compatible travel partners for their journeys.
 

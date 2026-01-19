@@ -10,7 +10,7 @@ import Testimonials from "@/components/home/Testimonials";
 
 export default function Home() {
   return (
-    <div className="p-3 md:p-6 lg:p-12">
+    <div>
       <Hero/>
       <PopularDestinations/>
       <HowItWorks/>
